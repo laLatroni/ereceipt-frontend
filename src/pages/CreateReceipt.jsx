@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const CreateReceipt = () => {
+
     const [id,setId] = useState('');
     const [or_number,setOrNumber] = useState('');
     const [names,setName] = useState('');
@@ -11,16 +13,18 @@ const CreateReceipt = () => {
     const [amount,setAmount] = useState('');
     const [customer_no,setCustomerNo] = useState('');
     
+    const navigate = useNavigate();
 
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        const names = `${firstname} ${lastname}`;
+        //const names = `${firstname} ${lastname}`;
 
         try {
             const data = await axios.post('http://localhost:8080/api/v1/api',{ id, or_number,names, cus_email, dates,rep_acc,amount,customer_no });
             console.log(data);
             alert('Transaction Complete');
+            navigate('/search-receipt');
         } catch(err) {
             console.log(err);
         }

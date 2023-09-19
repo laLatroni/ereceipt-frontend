@@ -14,7 +14,7 @@ const SearchReceipt = () => {
         
         try {
             const res = await axios.get(`http://localhost:8080/api/v1/api/${id}`)
-            console.log(res.data);
+            setReceipt(res.data);
         } catch (error) {
             console.log(error);
         }
@@ -41,12 +41,12 @@ const SearchReceipt = () => {
                         <th className="p-2">Action</th>
                     </tr>
                     <tr>
-                        <td className="p-2">1</td>
-                        <td className="p-2">Paul Andres</td>
-                        <td className="p-2">paul.andres@cazatechnology.com</td>
-                        <td className="p-2">123456</td>
-                        <td className="p-2">Sept 01, 2023</td>
-                        <td className="p-2">1,000</td>
+                        <td className="p-2">{receipt.id}</td>
+                        <td className="p-2">{receipt.names}</td>
+                        <td className="p-2">{receipt.cus_email}</td>
+                        <td className="p-2">{receipt.customer_no}</td>
+                        <td className="p-2">{receipt.dates}</td>
+                        <td className="p-2">{receipt.amount}</td>
                         <td className="flex items-center justify-center gap-3">
                             <button><BiEdit /></button>
                             <button className="text-red-500 text-xl"><BiTrash /></button>
