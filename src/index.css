@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+main {
+  padding: 5em;
+  margin :1em;
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+}
+
+.ereceipt {
+  border: 1px solid black;
+  padding: 2em;
+  width: 50%;
+}
+
+.top__header {
+  display: flex;
+  align-items:center;
+  justify-content: space-between;
+}
+
+.top__header__title {
+  font-weight: 500;
+}
+
+.top__header__number {
+  font-weight: 500;
+}
+
+.bottom__header__desc {
+  font-weight: 400;
+  font-size: 1.4em;;
+}
+
+.details__container {
+  margin-top: 3em;
+  border-top: 2px dashed black;
+  padding-top:2em;
+  display:flex;
+  flex-direction:column;
+  gap: 5px;
+}
+
+.details {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.details__tax {
+  display:flex;
+  flex-direction: column;
+  gap: 0.3em;
+}
+
+footer {
+  margin-top: 4em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
+  background: rgb(58, 103, 239);
+  padding: 0.9em;
+  border-radius:0.4em;
+  margin-top: 1em;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+nav {
+  width: 50%;
+}
+
+.btn__create {
+  margin-top: 0;
+  margin-bottom: 1em;
+  justify-self: end;
+}
+
+.btn-container {
+  display:flex; 
+  gap:20em;
+  width: 50%;
+}
