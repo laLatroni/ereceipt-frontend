@@ -1,18 +1,20 @@
 import { useState } from "react"
 import axios from "axios"
+import CAZALogo from "../components/CAZALogo";
+import { BiEdit,BiTrash } from 'react-icons/bi';
 
 const SearchReceipt = () => {
 
     const [id,setId] = useState("");
 
-    const [receipt,setReceipt] = useState({});
+    const [receipt,setReceipt] = useState([]);
 
     const searchId = async (e) => {
         e.preventDefault();
         
         try {
             const res = await axios.get(`http://localhost:8080/api/v1/api/${id}`)
-            setReceipt(res.data);
+            console.log(res.data);
         } catch (error) {
             console.log(error);
         }
@@ -20,21 +22,35 @@ const SearchReceipt = () => {
 
     return (
         <div className="flex flex-col items-center py-5 h-screen">
-            <img className="w-52" src="/images/cazalogo.png" alt="CAZA Logo" />
+            <CAZALogo />
 
-            <form className="flex flex-col p-2 w-1/2 gap-2" onSubmit={searchId}>
+            <form className="flex items-center p-2 w-3/4 gap-2 mt-5" onSubmit={searchId}>
                 <input className="p-2 border border-gray-300 w-1/2 rounded-md outline-none" type="search" onChange={(e)=> setId(e.target.value)} placeholder="Search OR number" />
+                <button className="bg-blue-500 text-white rounded-md p-2">Search</button>
             </form>
 
-            <table>
+            <table className="w-3/4 mt-5">
                 <tbody>
+                    <tr className="bg-blue-500 text-white">
+                        <th className="p-2">ID</th>
+                        <th className="p-2">Name</th>
+                        <th className="p-2">Email</th>
+                        <th className="p-2">Customer No.</th>
+                        <th className="p-2">Dates</th>
+                        <th className="p-2">Amount</th>
+                        <th className="p-2">Action</th>
+                    </tr>
                     <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Customer No.</th>
-                        <th>Dates</th>
-                        <th>Amount</th>
+                        <td className="p-2">1</td>
+                        <td className="p-2">Paul Andres</td>
+                        <td className="p-2">paul.andres@cazatechnology.com</td>
+                        <td className="p-2">123456</td>
+                        <td className="p-2">Sept 01, 2023</td>
+                        <td className="p-2">1,000</td>
+                        <td className="flex items-center justify-center gap-3">
+                            <button><BiEdit /></button>
+                            <button className="text-red-500 text-xl"><BiTrash /></button>
+                        </td>
                     </tr>
                 </tbody>
             </table>

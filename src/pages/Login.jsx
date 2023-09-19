@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import CAZALogo from '../components/CAZALogo';
 
 const Login = () => {
 
@@ -9,9 +10,9 @@ const Login = () => {
 
     return (
         <div className="container mx-auto h-screen flex justify-center items-center bg-gray-200">
-            <div className="grid grid-cols-2 w-1/2 px-10 py-5 h-3/4">
+            <div className="grid grid-cols-2 w-3/4 px-10 py-5 h-3/4">
                 <div className="bg-white p-10 flex flex-col justify-center">
-                    <img className="w-32 self-center" src="/images/cazalogo.png" alt="CAZA Logo" />
+                    <CAZALogo />
                     {/* <h1 className="text-center text-2xl font-semibold">Login</h1> */}
 
                     <form className="flex flex-col gap-2">
