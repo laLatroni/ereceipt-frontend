@@ -15,7 +15,7 @@ const CreateReceipt = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        // const names = `${firstname} ${lastname}`;
+        const names = `${firstname} ${lastname}`;
 
         try {
             const data = await axios.post('http://localhost:8080/api/v1/api',{ id, or_number,names, cus_email, dates,rep_acc,amount,customer_no });
@@ -28,24 +28,24 @@ const CreateReceipt = () => {
     }
 
     return (
-        <div className="h-screen container m-auto py-10 px-5">
-            <h1 className="text-center font-medium md:text-2xl">Customer Transaction</h1>
+        <div className="h-screen flex flex-col items-center container m-auto py-10 px-5">
+            <img className="w-52" src="/images/cazalogo.png" alt="CAZA Logo" />
+            <h1 className="text-center font-medium md:text-2xl mt-5">Customer Transaction</h1>
 
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center w-full">
                 <form className="w-1/2 flex flex-col gap-2" onSubmit={onSubmit}>
-                <div className="flex flex-col">
-                        <label className="text-sm" htmlFor="password">ID.:</label>
+                    <div className="flex flex-col">
+                        <label className="text-sm" htmlFor="password">ID:</label>
                         <input className="p-2 outline-none border border-gray-300 rounded-md" type="text" onChange={(e) => setId(e.target.value)} />
                     </div>
 
                     <div className="flex flex-col">
-                        <label className="text-sm" htmlFor="First Name">0r_number:</label>
+                        <label className="text-sm" htmlFor="First Name">OR Number:</label>
                         <input className="p-2 outline-none border border-gray-300 rounded-md" type="text" onChange={(e) => setOrNumber(e.target.value)} />
                     </div>
                  
-
                     <div className="flex flex-col">
-                        <label className="text-sm" htmlFor="Last Name">CustomerName:</label>
+                        <label className="text-sm" htmlFor="Last Name">Customer Name:</label>
                         <input className="p-2 outline-none border border-gray-300 rounded-md" type="text" onChange={(e) => setName(e.target.value)} />
                     </div>
                     <div className="flex flex-col">
