@@ -7,14 +7,14 @@ const SearchReceipt = () => {
 
     const [id,setId] = useState("");
 
-    const [receipt,setReceipt] = useState([]);
+    const [receipts,setReceipts] = useState([]);
 
     const searchId = async (e) => {
         e.preventDefault();
         
         try {
-            const res = await axios.get(`http://localhost:8080/api/v1/api/${id}`)
-            setReceipt(res.data);
+            const res = await axios.get(`http://localhost:8080/api/v1/api/departments`)
+            setReceipts(res.data);
         } catch (error) {
             console.log(error);
         }
@@ -25,7 +25,7 @@ const SearchReceipt = () => {
             <CAZALogo />
 
             <form className="flex items-center p-2 w-3/4 gap-2 mt-5" onSubmit={searchId}>
-                <input className="p-2 border border-gray-300 w-1/2 rounded-md outline-none" type="search" onChange={(e)=> setId(e.target.value)} placeholder="Search OR number" />
+                <input className="p-2 border border-gray-300 w-1/2 rounded-md outline-none" type="search" onChange={(e) => setId(e.target.value)} placeholder="Search OR number" />
                 <button className="bg-blue-500 text-white rounded-md p-2">Search</button>
             </form>
 
@@ -40,23 +40,24 @@ const SearchReceipt = () => {
                         <th className="p-2">Amount</th>
                         <th className="p-2">Action</th>
                     </tr>
-                    <tr>
-                        <td className="p-2">{receipt.id}</td>
-                        <td className="p-2">{receipt.names}</td>
-                        <td className="p-2">{receipt.cus_email}</td>
-                        <td className="p-2">{receipt.customer_no}</td>
-                        <td className="p-2">{receipt.dates}</td>
-                        <td className="p-2">{receipt.amount}</td>
-                        <td className="flex items-center justify-center gap-3">
-                            <button><BiEdit /></button>
-                            <button className="text-red-500 text-xl"><BiTrash /></button>
-                        </td>
-                    </tr>
+                    { receipts?.map(receipt => (
+                        <tr>
+                            <td className="p-2">{receipt.id}</td>
+                            <td className="p-2">{receipt.names}</td>
+                            <td className="p-2">{receipt.cus_email}</td>
+                            <td className="p-2">{receipt.customer_no}</td>
+                            <td className="p-2">{receipt.dates}</td>
+                            <td className="p-2">{receipt.amount}</td>
+                            <td className="flex items-center justify-center gap-3">
+                                <button className="text-green-500 text-xl"><BiEdit /></button>
+                                <button className="text-red-500 text-xl"><BiTrash /></button>
+                            </td>
+                        </tr>
+                    )) }
                 </tbody>
             </table>
-            
         </div>
     )
-
 }
+
 export default SearchReceipt
