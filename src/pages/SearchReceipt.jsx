@@ -7,8 +7,11 @@ const SearchReceipt = () => {
 
     const [id,setId] = useState("");
 
-    const [receipts,setReceipts] = useState([]);
-
+    const [receipts,setReceipts] = useState([
+    { id: 1, names: 'Paul Andres', cus_email:'polopdoandres@gmail.com',customer_no: 123456,dates: 'Sept 01, 2023', amount: 123},
+    { id: 2, names: 'Paul Andres', cus_email:'polopdoandres@gmail.com',customer_no: 123456,dates: 'Sept 01, 2023', amount: 123},
+    { id: 3, names: 'Paul Andres', cus_email:'polopdoandres@gmail.com',customer_no: 123456,dates: 'Sept 01, 2023', amount: 123},
+    { id: 4, names: 'Paul Andres', cus_email:'polopdoandres@gmail.com',customer_no: 123456,dates: 'Sept 01, 2023', amount: 123}]);
     const searchId = async (e) => {
         e.preventDefault();
         
@@ -18,6 +21,15 @@ const SearchReceipt = () => {
         } catch (error) {
             console.log(error);
         }
+    }
+
+
+    const editReceipt = (id) => {
+        console.log('edit');
+    }
+
+    const deleteReceipt = (id) => {
+        console.log('Delete');
     }
 
     return (
@@ -41,16 +53,16 @@ const SearchReceipt = () => {
                         <th className="p-2">Action</th>
                     </tr>
                     { receipts?.map(receipt => (
-                        <tr>
+                        <tr className="even:bg-gray-200">
                             <td className="p-2">{receipt.id}</td>
                             <td className="p-2">{receipt.names}</td>
                             <td className="p-2">{receipt.cus_email}</td>
                             <td className="p-2">{receipt.customer_no}</td>
                             <td className="p-2">{receipt.dates}</td>
                             <td className="p-2">{receipt.amount}</td>
-                            <td className="flex items-center justify-center gap-3">
-                                <button className="text-green-500 text-xl"><BiEdit /></button>
-                                <button className="text-red-500 text-xl"><BiTrash /></button>
+                            <td className="flex items-center justify-center gap-3 p-3">
+                                <button onClick={() => editReceipt(receipt.id)} className="text-green-500 text-xl"><BiEdit /></button>
+                                <button onClick={() => deleteReceipt(receipt.id)} className="text-red-500 text-xl"><BiTrash /></button>
                             </td>
                         </tr>
                     )) }

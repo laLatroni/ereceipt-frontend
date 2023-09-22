@@ -9,7 +9,7 @@ const Login = () => {
     const [password,setPassword] = useState('');
 
     return (
-        <div className="container mx-auto h-screen flex justify-center items-center bg-gray-200">
+        <div className=" h-screen flex justify-center items-center bg-gray-200">
             <div className="grid grid-cols-2 w-3/4 px-10 py-5 h-3/4">
                 <div className="bg-white p-10 flex flex-col justify-center">
                     <CAZALogo />
