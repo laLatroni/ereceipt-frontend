@@ -33,7 +33,7 @@ const SearchReceipt = () => {
 
     const deleteReceipt = async (id) => {
         try {
-            const data = await axios.delete(`http://localhost:8080/api/v1/api/departments/${id}`);
+            const data = await axios.delete(`http://localhost:8080/api/v1/api.departments/${id}`);
             alert(`Delete successful for id ${id}`);
             location.reload();
         } catch(err) {
