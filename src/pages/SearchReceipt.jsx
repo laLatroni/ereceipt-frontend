@@ -7,13 +7,7 @@ const SearchReceipt = () => {
 
     const [id,setId] = useState("");
 
-    const [receipts,setReceipts] = useState([
-        { id: 1, names: 'Paul Andres', cus_email:'asd@gmail.com',customer_no: 123456,dates: 'Sept 01, 2023', amount: 123},
-        { id: 2, names: 'John Lester Ymata', cus_email:'asd@gmail.com',customer_no: 123456,dates: 'Sept 01, 2023', amount: 123},
-        { id: 3, names: 'Genrev Condino', cus_email:'asd@gmail.com',customer_no: 123456,dates: 'Sept 01, 2023', amount: 123},
-        { id: 4, names: 'Janelle Iglesias', cus_email:'asd@gmail.com',customer_no: 123456,dates: 'Sept 01, 2023', amount: 123},
-        { id: 5, names: 'John Carlo Bitay', cus_email:'asd@gmail.com',customer_no: 123456,dates: 'Sept 01, 2023', amount: 123}
-    ]);
+    const [receipts,setReceipts] = useState([]);
     
     const searchId = async (e) => {
         e.preventDefault();
