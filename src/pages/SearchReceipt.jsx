@@ -8,10 +8,13 @@ const SearchReceipt = () => {
     const [id,setId] = useState("");
 
     const [receipts,setReceipts] = useState([
-    { id: 1, names: 'Paul Andres', cus_email:'polopdoandres@gmail.com',customer_no: 123456,dates: 'Sept 01, 2023', amount: 123},
-    { id: 2, names: 'Paul Andres', cus_email:'polopdoandres@gmail.com',customer_no: 123456,dates: 'Sept 01, 2023', amount: 123},
-    { id: 3, names: 'Paul Andres', cus_email:'polopdoandres@gmail.com',customer_no: 123456,dates: 'Sept 01, 2023', amount: 123},
-    { id: 4, names: 'Paul Andres', cus_email:'polopdoandres@gmail.com',customer_no: 123456,dates: 'Sept 01, 2023', amount: 123}]);
+        { id: 1, names: 'Paul Andres', cus_email:'asd@gmail.com',customer_no: 123456,dates: 'Sept 01, 2023', amount: 123},
+        { id: 2, names: 'John Lester Ymata', cus_email:'asd@gmail.com',customer_no: 123456,dates: 'Sept 01, 2023', amount: 123},
+        { id: 3, names: 'Genrev Condino', cus_email:'asd@gmail.com',customer_no: 123456,dates: 'Sept 01, 2023', amount: 123},
+        { id: 4, names: 'Janelle Iglesias', cus_email:'asd@gmail.com',customer_no: 123456,dates: 'Sept 01, 2023', amount: 123},
+        { id: 5, names: 'John Carlo Bitay', cus_email:'asd@gmail.com',customer_no: 123456,dates: 'Sept 01, 2023', amount: 123}
+    ]);
+    
     const searchId = async (e) => {
         e.preventDefault();
         
@@ -25,11 +28,17 @@ const SearchReceipt = () => {
 
 
     const editReceipt = (id) => {
-        console.log('edit');
+        console.log(id);
     }
 
-    const deleteReceipt = (id) => {
-        console.log('Delete');
+    const deleteReceipt = async (id) => {
+        try {
+            const data = await axios.delete(`http://localhost:8080/api/v1/api/departments/${id}`);
+            alert(`Delete successful for id ${id}`);
+            location.reload();
+        } catch(err) {
+            console.log(err);
+        }
     }
 
     return (
@@ -52,8 +61,8 @@ const SearchReceipt = () => {
                         <th className="p-2">Amount</th>
                         <th className="p-2">Action</th>
                     </tr>
-                    { receipts?.map(receipt => (
-                        <tr className="even:bg-gray-200">
+                    { receipts.filter(receipt => id === '' ? receipt : receipt.id === id)?.map(receipt => (
+                        <tr key={receipt.id} className="even:bg-gray-200">
                             <td className="p-2">{receipt.id}</td>
                             <td className="p-2">{receipt.names}</td>
                             <td className="p-2">{receipt.cus_email}</td>
