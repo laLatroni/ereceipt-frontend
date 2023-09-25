@@ -8,10 +8,11 @@ const SearchReceipt = () => {
     const [id,setId] = useState("");
 
     const [receipts,setReceipts] = useState([]);
+
+    const tableHeaders = ["ID","Name","Email","Customer No.","Dates","Amount","Action"];
     
     useEffect(() => {
-        const searchId = async () => {
-            
+        const getReceiptLists = async () => {
             try {
                 const res = await axios.get(`http://localhost:8080/api/v1/api/departments`)
                 setReceipts(res.data);
@@ -19,9 +20,8 @@ const SearchReceipt = () => {
                 console.log(error);
             }
         }
-        searchId();
+        getReceiptLists();
     },[])
-
 
     const editReceipt = (id) => {
         console.log(id);
@@ -49,13 +49,9 @@ const SearchReceipt = () => {
             <table className="w-3/4 mt-5">
                 <tbody>
                     <tr className="bg-blue-500 text-white">
-                        <th className="p-2">ID</th>
-                        <th className="p-2">Name</th>
-                        <th className="p-2">Email</th>
-                        <th className="p-2">Customer No.</th>
-                        <th className="p-2">Dates</th>
-                        <th className="p-2">Amount</th>
-                        <th className="p-2">Action</th>
+                        { tableHeaders.map(tableHeader => (
+                            <th className="p-2">{tableHeader}</th>
+                        )) }
                     </tr>
                     { receipts?.map(receipt => (
                         <tr key={receipt.id} className="even:bg-gray-200">
