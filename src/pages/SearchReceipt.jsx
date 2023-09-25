@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import axios from "axios"
 import CAZALogo from "../components/CAZALogo";
 import { BiEdit,BiTrash } from 'react-icons/bi';
@@ -9,16 +9,19 @@ const SearchReceipt = () => {
 
     const [receipts,setReceipts] = useState([]);
     
-    const searchId = async (e) => {
-        e.preventDefault();
-        
-        try {
-            const res = await axios.get(`http://localhost:8080/api/v1/api/departments`)
-            setReceipts(res.data);
-        } catch (error) {
-            console.log(error);
+    useEffect(() => {
+        const searchId = async (e) => {
+            e.preventDefault();
+            
+            try {
+                const res = await axios.get(`http://localhost:8080/api/v1/api/departments`)
+                setReceipts(res.data);
+            } catch (error) {
+                console.log(error);
+            }
         }
-    }
+        searchId();
+    },[])
 
 
     const editReceipt = (id) => {
@@ -39,7 +42,7 @@ const SearchReceipt = () => {
         <div className="flex flex-col items-center py-5 h-screen">
             <CAZALogo />
 
-            <form className="flex items-center p-2 w-3/4 gap-2 mt-5" onSubmit={searchId}>
+            <form className="flex items-center p-2 w-3/4 gap-2 mt-5">
                 <input className="p-2 border border-gray-300 w-1/2 rounded-md outline-none" type="search" onChange={(e) => setId(e.target.value)} placeholder="Search OR number" />
                 <button className="bg-blue-500 text-white rounded-md p-2">Search</button>
             </form>
