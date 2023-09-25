@@ -58,7 +58,7 @@ const SearchReceipt = () => {
                         <th className="p-2">Amount</th>
                         <th className="p-2">Action</th>
                     </tr>
-                    { receipts.filter(receipt => id === '' ? receipt : receipt.id === id)?.map(receipt => (
+                    { receipts?.map(receipt => (
                         <tr key={receipt.id} className="even:bg-gray-200">
                             <td className="p-2">{receipt.id}</td>
                             <td className="p-2">{receipt.names}</td>
