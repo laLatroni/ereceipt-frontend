@@ -9,6 +9,11 @@ const Signup = () => {
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
     const [confirmPassword,setConfirmPassword] = useState('');
+
+
+    // /api/v1/register -> registration -> gagawa ng record sa user/customer table
+    // /api/v1/login -> login -> mapupunta sa homepage 
+    // /api/v1/forgetpassword -> forget password
     
     return (
         <div className="bg-gray-200 h-screen flex justify-center items-center">

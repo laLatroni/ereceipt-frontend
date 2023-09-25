@@ -10,8 +10,7 @@ const SearchReceipt = () => {
     const [receipts,setReceipts] = useState([]);
     
     useEffect(() => {
-        const searchId = async (e) => {
-            e.preventDefault();
+        const searchId = async () => {
             
             try {
                 const res = await axios.get(`http://localhost:8080/api/v1/api/departments`)
