@@ -1,29 +1,33 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
-import CAZALogo from "../components/CAZALogo";
 import { BiEdit,BiTrash } from 'react-icons/bi';
 import DateFormat from "../components/DateFormat";
 import NumberFormat from "../components/NumberFormat";
 import { AiOutlineFilePdf } from 'react-icons/ai';
 import Update from "../components/Update";
+import { useCookies,Cookies } from 'react-cookie';
 
 const SearchReceipt = () => {
 
     const [id,setId] = useState("");
     const [data,setData] = useState({});
     const [openUpdate,setOpenUpdate] = useState(false);
-
+    const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
     const [receipts,setReceipts] = useState([
-        {id: 1, names: 'Paul Andres',cus_email: 'polopdoandres@gmail.com',customer_no: 123456, dates: '2023-06-15',amount: 1234},
-        {id: 2, names: 'John Lester Ymata',cus_email: 'johnlesterymata@gmail.com',customer_no: 123456, dates: '2023-03-20',amount: 1234}
+        // {id: 1, names: 'Paul Andres',cus_email: 'polopdoandres@gmail.com',customer_no: 123456, dates: '2023-06-15',amount: 1234},
+        // {id: 2, names: 'John Lester Ymata',cus_email: 'johnlesterymata@gmail.com',customer_no: 123456, dates: '2023-03-20',amount: 1234}
     ]);
 
     const tableHeaders = ["ID","Name","Email","Customer No.","Dates","Amount","Action"];
     
+    const config = {
+        headers: { Authorization: `Bearer ${cookies.Authorization}` }
+    };
+
     useEffect(() => {
         const getReceiptLists = async () => {
             try {
-                const res = await axios.get(`http://localhost:8080/api/v1/api/departments`)
+                const res = await axios.get(`http://localhost:8080/api/v1/api/departments`,config);
                 setReceipts(res.data);
             } catch (error) {
                 console.log(error);
@@ -52,7 +56,7 @@ const SearchReceipt = () => {
             {/* <CAZALogo /> */}
             <form className="flex items-center p-2 w-3/4 gap-2 mt-5">
                 <input className="p-2 border border-gray-300 w-1/2 rounded-md outline-none" type="search" onChange={(e) => setId(e.target.value)} placeholder="Search OR number" />
-                <button className="bg-blue-500 text-white rounded-md p-2">Search</button>
+                {/* <button className="bg-blue-500 text-white rounded-md p-2">Search</button> */}
             </form>
 
             <table className="w-3/4 mt-5">
