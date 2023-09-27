@@ -6,6 +6,7 @@ import Signup from './pages/Signup';
 import CreateReceipt from './pages/CreateReceipt';
 import SearchReceipt from './pages/SearchReceipt';
 import AdminLayout from './layouts/AdminLayout';
+import NotFound from './pages/NotFound';
  
 const router = createBrowserRouter(
 
@@ -17,6 +18,7 @@ const router = createBrowserRouter(
         <Route path='/search-receipt' element={<SearchReceipt/>} />
         <Route path='/create-receipt' element={<CreateReceipt />} />
       </Route>
+      <Route path='*' element={<NotFound />} />
     </Route>
   )
 )

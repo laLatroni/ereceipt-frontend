@@ -5,7 +5,7 @@ import DateFormat from "../components/DateFormat";
 import NumberFormat from "../components/NumberFormat";
 import { AiOutlineFilePdf } from 'react-icons/ai';
 import Update from "../components/Update";
-import { useCookies,Cookies } from 'react-cookie';
+import { useCookies } from 'react-cookie';
 
 const SearchReceipt = () => {
 
@@ -14,20 +14,16 @@ const SearchReceipt = () => {
     const [openUpdate,setOpenUpdate] = useState(false);
     const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
     const [receipts,setReceipts] = useState([
-        // {id: 1, names: 'Paul Andres',cus_email: 'polopdoandres@gmail.com',customer_no: 123456, dates: '2023-06-15',amount: 1234},
-        // {id: 2, names: 'John Lester Ymata',cus_email: 'johnlesterymata@gmail.com',customer_no: 123456, dates: '2023-03-20',amount: 1234}
+        //{id: 1, names: 'Paul Andres',cus_email: 'polopdoandres@gmail.com',customer_no: 123456, dates: '2023-06-15',amount: 1234},
+        //{id: 2, names: 'John Lester Ymata',cus_email: 'johnlesterymata@gmail.com',customer_no: 123456, dates: '2023-03-20',amount: 1234}
     ]);
 
     const tableHeaders = ["ID","Name","Email","Customer No.","Dates","Amount","Action"];
-    
-    const config = {
-        headers: { Authorization: `Bearer ${cookies.Authorization}` }
-    };
 
     useEffect(() => {
         const getReceiptLists = async () => {
             try {
-                const res = await axios.get(`http://localhost:8080/api/v1/api/departments`,config);
+                const res = await axios.get(`http://localhost:8080/api/v1/api/departments`);
                 setReceipts(res.data);
             } catch (error) {
                 console.log(error);
