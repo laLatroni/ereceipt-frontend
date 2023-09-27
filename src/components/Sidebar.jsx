@@ -17,7 +17,7 @@ const Sidebar = () => {
             <CAZALogo />
             <ul className="flex mt-5 flex-col gap-2 w-full">
                 { menus.map((menu,idx) => (
-                    <Link to={`${menu.link}`} className="p-2 text-xl font-semibold text-gray-100 flex items-center gap-1" key={idx}>
+                    <Link to={`${menu.link}`} className="p-2 text-lg font-medium text-gray-100 flex items-center gap-1" key={idx}>
                         {menu.icon}
                         <li className="px-2">{menu.menu}</li>
                     </Link>

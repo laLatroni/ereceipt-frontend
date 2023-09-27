@@ -59,12 +59,12 @@ const CreateReceipt = () => {
 
                     <div className="flex flex-col">
                         <label className="text-sm" htmlFor="Email">Customer Email:</label>
-                        <input className="p-2 outline-none border border-gray-300 rounded-md" type="text" onChange={(e) => setcusEmail(e.target.value)} />
+                        <input className="p-2 outline-none border border-gray-300 rounded-md" type="email" onChange={(e) => setcusEmail(e.target.value)} />
                     </div>
 
                     <div className="flex flex-col">
                         <label className="text-sm" htmlFor="password">Date:</label>
-                        <input className="p-2 outline-none border border-gray-300 rounded-md" type="text" onChange={(e) => setDates(e.target.value)} />
+                        <input className="p-2 outline-none border border-gray-300 rounded-md" type="date" onChange={(e) => setDates(e.target.value)} />
                     </div>
 
                     <div className="flex flex-col">
