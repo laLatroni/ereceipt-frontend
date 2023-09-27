@@ -62,7 +62,7 @@ const SearchReceipt = () => {
                             <th key={idx} className="p-2">{tableHeader}</th>
                         )) }
                     </tr>
-                    { receipts?.map((receipt,idx) => (
+                    { receipts?.filter(receipt => id === '' ? receipt : receipt.id == id).map((receipt,idx) => (
                         <tr key={idx} className="even:bg-gray-200">
                             <td className="p-2">{receipt.id}</td>
                             <td className="p-2">{receipt.names}</td>
