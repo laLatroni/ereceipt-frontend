@@ -53,12 +53,12 @@ const SearchReceipt = () => {
             <table className="w-3/4 mt-5">
                 <tbody>
                     <tr className="bg-blue-500 text-white">
-                        { tableHeaders.map(tableHeader => (
-                            <th className="p-2">{tableHeader}</th>
+                        { tableHeaders.map((tableHeader,idx) => (
+                            <th key={idx} className="p-2">{tableHeader}</th>
                         )) }
                     </tr>
-                    { receipts?.map(receipt => (
-                        <tr key={receipt.id} className="even:bg-gray-200">
+                    { receipts?.map((receipt,idx) => (
+                        <tr key={idx} className="even:bg-gray-200">
                             <td className="p-2">{receipt.id}</td>
                             <td className="p-2">{receipt.names}</td>
                             <td className="p-2">{receipt.cus_email}</td>
