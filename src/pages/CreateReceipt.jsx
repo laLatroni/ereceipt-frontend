@@ -33,7 +33,7 @@ const CreateReceipt = () => {
 
     return (
         <div className="h-screen flex flex-col items-center container m-auto py-10 px-5">
-            <img className="w-52" src="/images/cazalogo.png" alt="CAZA Logo" />
+            {/* <img className="w-52" src="/images/cazalogo.png" alt="CAZA Logo" /> */}
             <h1 className="text-center font-medium md:text-2xl mt-5">Customer Transaction</h1>
 
             <div className="flex justify-center items-center w-full">
