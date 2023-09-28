@@ -38,44 +38,44 @@ const CreateReceipt = () => {
 
             <div className="flex justify-center items-center w-full">
                 <form className="w-1/2 flex flex-col gap-2" onSubmit={onSubmit}>
-                    <div className="flex flex-col">
+                    {/* <div className="flex flex-col">
                         <label className="text-sm" htmlFor="password">ID:</label>
                         <input className="p-2 outline-none border border-gray-300 rounded-md" type="text" onChange={(e) => setId(e.target.value)} />
-                    </div>
+                    </div> */}
 
-                    <div className="flex flex-col">
+                    {/* <div className="flex flex-col">
                         <label className="text-sm" htmlFor="First Name">OR Number:</label>
                         <input className="p-2 outline-none border border-gray-300 rounded-md" type="text" onChange={(e) => setOrNumber(e.target.value)} />
-                    </div>
+                    </div> */}
                  
                     <div className="flex flex-col">
                         <label className="text-sm" htmlFor="Last Name">Customer Name:</label>
-                        <input className="p-2 outline-none border border-gray-300 rounded-md" type="text" onChange={(e) => setName(e.target.value)} />
+                        <input className="p-2 outline-none border border-gray-300 rounded-md" type="text" onChange={(e) => setName(e.target.value)} required />
                     </div>
                     <div className="flex flex-col">
                         <label className="text-sm" htmlFor="password">Amount:</label>
-                        <input className="p-2 outline-none border border-gray-300 rounded-md" type="text" onChange={(e) => setAmount(e.target.value)} />
+                        <input className="p-2 outline-none border border-gray-300 rounded-md" type="text" onChange={(e) => setAmount(e.target.value)} required />
                     </div>
 
                     <div className="flex flex-col">
                         <label className="text-sm" htmlFor="Email">Customer Email:</label>
-                        <input className="p-2 outline-none border border-gray-300 rounded-md" type="email" onChange={(e) => setcusEmail(e.target.value)} />
+                        <input className="p-2 outline-none border border-gray-300 rounded-md" type="email" onChange={(e) => setcusEmail(e.target.value)} required />
                     </div>
 
                     <div className="flex flex-col">
                         <label className="text-sm" htmlFor="password">Date:</label>
-                        <input className="p-2 outline-none border border-gray-300 rounded-md" type="date" onChange={(e) => setDates(e.target.value)} />
+                        <input className="p-2 outline-none border border-gray-300 rounded-md" type="date" onChange={(e) => setDates(e.target.value)} required />
                     </div>
 
                     <div className="flex flex-col">
                         <label className="text-sm" htmlFor="password">Mode of Payment:</label>
-                        <input className="p-2 outline-none border border-gray-300 rounded-md" type="text" onChange={(e) => setRep(e.target.value)} />
+                        <input className="p-2 outline-none border border-gray-300 rounded-md" type="text" onChange={(e) => setRep(e.target.value)} required  />
                     </div>
                 
-                    <div className="flex flex-col">
+                    {/* <div className="flex flex-col">
                         <label className="text-sm" htmlFor="password">Customer No.:</label>
                         <input className="p-2 outline-none border border-gray-300 rounded-md" type="text" onChange={(e) => setCustomerNo(e.target.value)} />
-                    </div>
+                    </div> */}
 
                     <button className="bg-blue-500 text-gray-100 rounded-md p-2 w-1/4 self-end">Submit</button>
                 </form>

@@ -52,7 +52,7 @@ const SearchReceipt = () => {
                             <th key={idx} className="p-2">{tableHeader}</th>
                         )) }
                     </tr>
-                    { receipts?.filter(receipt => id === '' ? receipt : receipt.id == id).map((receipt,idx) => (
+                    { receipts?.filter(receipt => id === '' ? receipt : receipt.id == id || id.includes(receipt.cus_email) || id.includes(receipt.names)).map((receipt,idx) => (
                         <tr key={idx} className="even:bg-gray-200">
                             <td className="p-2">{receipt.id}</td>
                             <td className="p-2">{receipt.names}</td>
@@ -68,6 +68,8 @@ const SearchReceipt = () => {
                         </tr>
                     )) }
                 </tbody>
+
+
             </table>
             { openUpdate && <Update record={data} setOpenUpdate={setOpenUpdate} /> }
         </div>
