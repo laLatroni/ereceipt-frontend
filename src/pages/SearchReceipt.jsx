@@ -6,6 +6,8 @@ import NumberFormat from "../components/NumberFormat";
 import { AiOutlineFilePdf } from 'react-icons/ai';
 import Update from "../components/Update";
 import { useCookies } from 'react-cookie';
+import { useNavigate } from 'react-router-dom';
+import { useFetchHook } from "../hooks/useFetchHook";
 
 const SearchReceipt = () => {
 
@@ -13,24 +15,12 @@ const SearchReceipt = () => {
     const [data,setData] = useState({});
     const [openUpdate,setOpenUpdate] = useState(false);
     const [cookies, setCookie, removeCookie] = useCookies(['Authorization']);
-    const [receipts,setReceipts] = useState([
-        //{id: 1, names: 'Paul Andres',cus_email: 'polopdoandres@gmail.com',customer_no: 123456, dates: '2023-06-15',amount: 1234},
-        //{id: 2, names: 'John Lester Ymata',cus_email: 'johnlesterymata@gmail.com',customer_no: 123456, dates: '2023-03-20',amount: 1234}
-    ]);
 
     const tableHeaders = ["ID","Name","Email","Customer No.","Dates","Amount","Action"];
 
-    useEffect(() => {
-        const getReceiptLists = async () => {
-            try {
-                const res = await axios.get(`http://localhost:8080/api/v1/api/departments`);
-                setReceipts(res.data);
-            } catch (error) {
-                console.log(error);
-            }
-        }
-        getReceiptLists();
-    },[])
+    const navigate = useNavigate();
+
+    const { records: receipts, isLoading } = useFetchHook(`http://localhost:8080/api/v1/api/departments`);
 
     const editReceipt = (receipt) => {
         setData(receipt);
@@ -54,7 +44,7 @@ const SearchReceipt = () => {
                 <input className="p-2 border border-gray-300 w-1/2 rounded-md outline-none" type="search" onChange={(e) => setId(e.target.value)} placeholder="Search OR number" />
                 {/* <button className="bg-blue-500 text-white rounded-md p-2">Search</button> */}
             </form>
-
+            { isLoading && <p className="font-semibold text-xl animate-pulse">No records yet...</p> }
             <table className="w-3/4 mt-5">
                 <tbody>
                     <tr className="bg-blue-500 text-white">
@@ -73,7 +63,7 @@ const SearchReceipt = () => {
                             <td className="flex items-center justify-center gap-3 p-3">
                                 <button onClick={() => editReceipt(receipt)} className="text-green-500 text-xl"><BiEdit /></button>
                                 <button onClick={() => deleteReceipt(receipt.id)} className="text-red-500 text-xl"><BiTrash /></button>
-                                <button className="text-xl text-red-500"><AiOutlineFilePdf /></button>
+                                <button onClick={() => navigate(`/generatepdf/${receipt.id}`)} className="text-xl text-red-500"><AiOutlineFilePdf /></button>
                             </td>
                         </tr>
                     )) }
