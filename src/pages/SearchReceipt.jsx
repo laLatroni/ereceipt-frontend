@@ -44,7 +44,7 @@ const SearchReceipt = () => {
                 <input className="p-2 border border-gray-300 w-1/2 rounded-md outline-none" type="search" onChange={(e) => setId(e.target.value)} placeholder="Search OR number" />
                 {/* <button className="bg-blue-500 text-white rounded-md p-2">Search</button> */}
             </form>
-            { isLoading && <p className="font-semibold text-xl animate-pulse">No records yet...</p> }
+            {/* { isLoading && <p className="font-semibold text-xl animate-pulse">No records yet...</p> } */}
             <table className="w-3/4 mt-5">
                 <tbody>
                     <tr className="bg-blue-500 text-white">
@@ -52,7 +52,7 @@ const SearchReceipt = () => {
                             <th key={idx} className="p-2">{tableHeader}</th>
                         )) }
                     </tr>
-                    { receipts?.filter(receipt => id === '' ? receipt : receipt.id == id || id.includes(receipt.cus_email) || id.includes(receipt.names)).map((receipt,idx) => (
+                    { receipts?.filter(receipt => id === '' ? receipt : receipt.id == id || receipt.cus_email.includes(id) || receipt.names.includes(id)).map((receipt,idx) => (
                         <tr key={idx} className="even:bg-gray-200">
                             <td className="p-2">{receipt.id}</td>
                             <td className="p-2">{receipt.names}</td>
