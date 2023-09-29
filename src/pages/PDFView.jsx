@@ -49,8 +49,10 @@ const PDFView = () => {
                         <p>Mode of payment: {records?.rep_acc}</p>
                     </div>
                 </div>
-                <button onClick={generatePdf} className="bg-blue-500 w-fit p-2 rounded-md text-gray-100 self-center">Generate E-receipt</button>
-                <button onClick={sendReceipt} className="bg-blue-500 w-fit p-2 rounded-md text-gray-100 self-center">Send receipt</button>
+                <div className="flex items-center justify-center gap-2">
+                    <button onClick={generatePdf} className="bg-blue-500 w-fit p-2 rounded-md text-gray-100 self-center">Generate E-receipt</button>
+                    <button onClick={sendReceipt} className="bg-blue-500 w-fit p-2 rounded-md text-gray-100 self-center">Send receipt</button>
+                </div>
             </div>
         </div>
     )
