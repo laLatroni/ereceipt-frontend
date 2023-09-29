@@ -41,7 +41,7 @@ const SearchReceipt = () => {
         <div className="flex flex-col items-center py-5 h-screen relative">
             {/* <CAZALogo /> */}
             <form className="flex items-center p-2 w-3/4 gap-2 mt-5">
-                <input className="p-2 border border-gray-300 w-1/2 rounded-md outline-none" type="search" onChange={(e) => setId(e.target.value)} placeholder="Search OR number" />
+                <input className="p-2 border border-gray-300 w-1/2 rounded-md outline-none" type="search" onChange={(e) => setId(e.target.value)} placeholder="Type to search" />
                 {/* <button className="bg-blue-500 text-white rounded-md p-2">Search</button> */}
             </form>
             { isLoading && <p className="font-semibold text-xl animate-pulse">No records yet...</p> }
