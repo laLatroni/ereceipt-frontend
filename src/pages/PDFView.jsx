@@ -14,14 +14,25 @@ const PDFView = () => {
         try {
             const data = await axios.get(`http://localhost:8080/api/v1/generate/${id}`);
             console.log(data);
+            alert('receipt has been regenerated');
         } catch(err) {
             console.log(err);
         }
     } 
 
+    const sendReceipt = async () => {
+        try {
+            const data = await axios.post(`http://localhost:8080/api/v1/send-email`, { names: records.names, cus_email: records.cus_email, or_number: records.or_number,dates: records.dates, rep_acc: records.rep_acc, amount: records.amount });
+            console.log(data);
+            alert(`Email has been sent to ${records.cus_email}`)
+        } catch(err) {
+            console.log(err);
+        }
+    }
+
     return (
         <div className="h-screen flex justify-center items-center bg-gray-100">
-            <form className="bg-white rounded-md p-2 w-1/2 flex flex-col" onSubmit={generatePdf}>
+            <div className="bg-white rounded-md p-2 w-1/2 flex flex-col">
                 <CAZALogo />
                 <h1 className="text-3xl font-bold text-blue-500 text-center tracking-widest mt-5">OFFICIAL RECEIPT</h1>
                 <div>
@@ -38,8 +49,9 @@ const PDFView = () => {
                         <p>Mode of payment: Debit to Account</p>
                     </div>
                 </div>
-                <button className="bg-blue-500 w-fit p-2 rounded-md text-gray-100 self-center">Generate E-receipt</button>
-            </form>
+                <button onClick={generatePdf} className="bg-blue-500 w-fit p-2 rounded-md text-gray-100 self-center">Generate E-receipt</button>
+                <button onClick={sendReceipt} className="bg-blue-500 w-fit p-2 rounded-md text-gray-100 self-center">Send receipt</button>
+            </div>
         </div>
     )
 }
