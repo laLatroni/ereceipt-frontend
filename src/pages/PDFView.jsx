@@ -43,10 +43,10 @@ const PDFView = () => {
                         <h2>OR#: 1001-1000</h2>
                     </div>
                     <div className="border-t-2 border-dashed border-gray-800 p-2">
-                        <p>Received from: jlpogi</p>
-                        <p>Date: <DateFormat date='2023-06-15' /></p>
-                        <p>Receive amount: <NumberFormat amount={1234} /></p>
-                        <p>Mode of payment: Debit to Account</p>
+                        <p>Received from: {records.names}</p>
+                        <p>Date: <DateFormat date={records.dates} /></p>
+                        <p>Receive amount: <NumberFormat amount={records.amount} /></p>
+                        <p>Mode of payment: {records.rep_acc}</p>
                     </div>
                 </div>
                 <button onClick={generatePdf} className="bg-blue-500 w-fit p-2 rounded-md text-gray-100 self-center">Generate E-receipt</button>
