@@ -3,6 +3,7 @@ import { useFetchHook } from '../hooks/useFetchHook';
 import DateFormat from '../components/DateFormat';
 import NumberFormat from '../components/NumberFormat';
 import CAZALogo from '../components/CAZALogo';
+import axios from 'axios';
 
 const PDFView = () => {
 
@@ -11,6 +12,7 @@ const PDFView = () => {
     const { records,isLoading } = useFetchHook(`http://localhost:8080/api/v1/api/departments/${id}`);
 
     const generatePdf = async () => {
+        console.log('working!')
         try {
             const data = await axios.get(`http://localhost:8080/api/v1/generate/${id}`);
             console.log(data);
@@ -49,9 +51,9 @@ const PDFView = () => {
                         <p>Mode of payment: {records?.rep_acc}</p>
                     </div>
                 </div>
-                <div className="flex items-center justify-center gap-2">
-                    <button onClick={generatePdf} className="bg-blue-500 w-fit p-2 rounded-md text-gray-100 self-center">Generate E-receipt</button>
-                    <button onClick={sendReceipt} className="bg-blue-500 w-fit p-2 rounded-md text-gray-100 self-center">Send receipt</button>
+                <div className="flex items-center justify-center gap-2 p-2">
+                    <button onClick={generatePdf} className="bg-blue-500 w-fit p-2 rounded-md text-gray-100 self-center cursor-pointer">Generate E-receipt</button>
+                    <button onClick={sendReceipt} className="bg-blue-500 w-fit p-2 rounded-md text-gray-100 self-center cursor-pointer">Send receipt</button>
                 </div>
             </div>
         </div>
