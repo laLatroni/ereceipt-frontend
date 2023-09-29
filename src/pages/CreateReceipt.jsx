@@ -26,7 +26,7 @@ const CreateReceipt = () => {
         //const names = `${firstname} ${lastname}`;
 
         try {
-            const data = await axios.post('http://192.168.50.48:8080/api/v1/api',{ id, or_number,names, cus_email, dates,rep_acc,amount,customer_no });
+            const data = await axios.post('http://192.168.50.48:8080/api/v1/api/departments',{ id, or_number,names, cus_email, dates,rep_acc,amount,customer_no });
             console.log(data);
             alert('Transaction Complete');
             navigate('/search-receipt');
