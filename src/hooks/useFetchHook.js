@@ -14,7 +14,7 @@ export const useFetchHook = (url) => {
             setIsLoading(true);
             try {
                 const data = await axios.get(url,{ signal });
-                setRecords(data.data);
+                setRecords(data?.data);
                 console.log(data.data);
                 setIsLoading(false);
             }
