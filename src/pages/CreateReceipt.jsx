@@ -4,15 +4,20 @@ import { useNavigate } from 'react-router-dom';
 
 const CreateReceipt = () => {
 
+    const year = new Date().getFullYear();
+    const month = new Date().getMonth() + 1
+    const day = new Date().getDate();
+    const dateFormat = year + '-' + (month < 10 ? `0${month}` : month) + '-' + day;
+   
     const [id,setId] = useState('');
     const [or_number,setOrNumber] = useState('');
     const [names,setName] = useState('');
     const [cus_email,setcusEmail] = useState('');
-    const [dates,setDates] = useState('');
+    const [dates,setDates] = useState(dateFormat);
     const [rep_acc,setRep] = useState('');
     const [amount,setAmount] = useState('');
     const [customer_no,setCustomerNo] = useState('');
-    
+    console.log(typeof dates);
     const navigate = useNavigate();
 
     const onSubmit = async (e) => {
@@ -21,7 +26,7 @@ const CreateReceipt = () => {
         //const names = `${firstname} ${lastname}`;
 
         try {
-            const data = await axios.post('http://localhost:8080/api/v1/api',{ id, or_number,names, cus_email, dates,rep_acc,amount,customer_no });
+            const data = await axios.post('http://192.168.50.48:8080/api/v1/api',{ id, or_number,names, cus_email, dates,rep_acc,amount,customer_no });
             console.log(data);
             alert('Transaction Complete');
             navigate('/search-receipt');
@@ -64,7 +69,7 @@ const CreateReceipt = () => {
 
                     <div className="flex flex-col">
                         <label className="text-sm" htmlFor="password">Date:</label>
-                        <input className="p-2 outline-none border border-gray-300 rounded-md" type="date" onChange={(e) => setDates(e.target.value)} required />
+                        <input className="p-2 outline-none border border-gray-300 rounded-md" type="date" value={dateFormat} required />
                     </div>
 
                     <div className="flex flex-col">

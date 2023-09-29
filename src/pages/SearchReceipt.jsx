@@ -20,7 +20,7 @@ const SearchReceipt = () => {
 
     const navigate = useNavigate();
 
-    const { records: receipts, isLoading } = useFetchHook(`http://localhost:8080/api/v1/api/departments`);
+    const { records: receipts, isLoading } = useFetchHook(`http://192.168.50.48:8080/api/v1/api/departments`);
 
     const editReceipt = (receipt) => {
         setData(receipt);
@@ -29,7 +29,7 @@ const SearchReceipt = () => {
 
     const deleteReceipt = async (id) => {
         try {
-            const data = await axios.delete(`http://localhost:8080/api/v1/api.departments/${id}`);
+            const data = await axios.delete(`http://192.168.50.48:8080/api/v1/api.departments/${id}`);
             alert(`Delete successful for id ${id}`);
             location.reload();
         } catch(err) {
@@ -52,7 +52,7 @@ const SearchReceipt = () => {
                             <th key={idx} className="p-2">{tableHeader}</th>
                         )) }
                     </tr>
-                    { receipts?.filter(receipt => id === '' ? receipt : receipt.id == id || receipt.cus_email.includes(id) || receipt.names.includes(id)).map((receipt,idx) => (
+                    { receipts?.filter(receipt => id === '' ? receipt : receipt.id == id || receipt.cus_email.includes(id) || receipt.names.includes(id) || receipt.amount.includes(id)).map((receipt,idx) => (
                         <tr key={idx} className="even:bg-gray-200">
                             <td className="p-2">{receipt.id}</td>
                             <td className="p-2">{receipt.names}</td>

@@ -8,6 +8,7 @@ import SearchReceipt from './pages/SearchReceipt';
 import AdminLayout from './layouts/AdminLayout';
 import NotFound from './pages/NotFound';
 import PDFView from './pages/PDFView';
+import Dashboard from './pages/Dashboard';
  
 const router = createBrowserRouter(
 
@@ -16,6 +17,7 @@ const router = createBrowserRouter(
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element={<Signup /> } />
       <Route element={<AdminLayout />}>
+        <Route path='/' element={<Dashboard />} />
         <Route path='/search-receipt' element={<SearchReceipt/>} />
         <Route path='/create-receipt' element={<CreateReceipt />} />
         <Route path='/generatepdf/:id' element={<PDFView />} />
