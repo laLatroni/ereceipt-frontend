@@ -12,7 +12,7 @@ const PDFView = () => {
     const { records,isLoading } = useFetchHook(`http://localhost:8080/api/v1/api/departments/${id}`);
 
     const generatePdf = async () => {
-        console.log('working!')
+        
         try {
             const data = await axios.get(`http://localhost:8080/api/v1/generate/${id}`);
             console.log(data);

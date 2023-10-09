@@ -11,13 +11,17 @@ const CreateReceipt = () => {
    
     const [id,setId] = useState('');
     const [or_number,setOrNumber] = useState('');
-    const [names,setName] = useState('');
+
+    const [firstName,setFirstName] = useState('');
+    const [lastName,setLastName] = useState('');
+    const [middleName,setMiddleName] = useState('');
+    const [names,setNames] = useState(`${firstName} ${middleName} ${lastName}`);
+
     const [cus_email,setcusEmail] = useState('');
     const [dates,setDates] = useState(dateFormat);
     const [rep_acc,setRep] = useState('');
     const [amount,setAmount] = useState('');
     const [customer_no,setCustomerNo] = useState('');
-    console.log(typeof dates);
     const navigate = useNavigate();
 
     const onSubmit = async (e) => {
@@ -43,20 +47,21 @@ const CreateReceipt = () => {
 
             <div className="flex justify-center items-center w-full">
                 <form className="w-1/2 flex flex-col gap-2" onSubmit={onSubmit}>
-                    {/* <div className="flex flex-col">
-                        <label className="text-sm" htmlFor="password">ID:</label>
-                        <input className="p-2 outline-none border border-gray-300 rounded-md" type="text" onChange={(e) => setId(e.target.value)} />
-                    </div> */}
-
-                    {/* <div className="flex flex-col">
-                        <label className="text-sm" htmlFor="First Name">OR Number:</label>
-                        <input className="p-2 outline-none border border-gray-300 rounded-md" type="text" onChange={(e) => setOrNumber(e.target.value)} />
-                    </div> */}
-                 
                     <div className="flex flex-col">
-                        <label className="text-sm" htmlFor="Last Name">Customer Name:</label>
-                        <input className="p-2 outline-none border border-gray-300 rounded-md" type="text" onChange={(e) => setName(e.target.value)} required />
+                        <label className="text-sm" htmlFor="password">First Name:</label>
+                        <input className="p-2 outline-none border border-gray-300 rounded-md" type="text" onChange={(e) => setFirstName(e.target.value)} />
                     </div>
+
+                    <div className="flex flex-col">
+                        <label className="text-sm" htmlFor="First Name">Middle Name:</label>
+                        <input className="p-2 outline-none border border-gray-300 rounded-md" type="text" onChange={(e) => setMiddleName(e.target.value)} />
+                    </div>
+
+                    <div className="flex flex-col">
+                        <label className="text-sm" htmlFor="First Name">Last Name:</label>
+                        <input className="p-2 outline-none border border-gray-300 rounded-md" type="text" onChange={(e) => setLastName(e.target.value)} />
+                    </div>
+                
                     <div className="flex flex-col">
                         <label className="text-sm" htmlFor="password">Amount:</label>
                         <input className="p-2 outline-none border border-gray-300 rounded-md" type="text" onChange={(e) => setAmount(e.target.value)} required />
@@ -69,12 +74,15 @@ const CreateReceipt = () => {
 
                     <div className="flex flex-col">
                         <label className="text-sm" htmlFor="password">Date:</label>
-                        <input className="p-2 outline-none border border-gray-300 rounded-md" type="date" value={dateFormat} required />
+                        <input className="p-2 outline-none border border-gray-300 rounded-md" type="date" value={(e) => setDates(dateFormat)} required />
                     </div>
 
                     <div className="flex flex-col">
                         <label className="text-sm" htmlFor="password">Mode of Payment:</label>
-                        <input className="p-2 outline-none border border-gray-300 rounded-md" type="text" onChange={(e) => setRep(e.target.value)} required  />
+                        <select className="p-2 outline-none border border-gray-300 rounded-md">
+                            <option hidden>Select mode of payment</option>
+                        </select>
+                        
                     </div>
                 
                     {/* <div className="flex flex-col">
