@@ -4,7 +4,7 @@ import { BiEdit,BiTrash } from 'react-icons/bi';
 import { AiOutlineFilePdf } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 
-const Table = ({ records,setOpenUpdate,setData }) => {
+const Table = ({ records,setOpenUpdate,setOpenDelete,setData }) => {
 
     const tableHeaders = ["ID","Name","Email","Customer No.","Dates","Amount","Action"];
 
@@ -16,13 +16,15 @@ const Table = ({ records,setOpenUpdate,setData }) => {
     }
 
     const deleteReceipt = async (id) => {
-        try {
-            const data = await axios.delete(`http://192.168.50.48:8080/api/v1/api.departments/${id}`);
-            alert(`Delete successful for id ${id}`);
-            location.reload();
-        } catch(err) {
-            console.log(err);
-        }
+        setOpenDelete(true);
+        setData(id);
+        // try {
+        //     const data = await axios.delete(`http://192.168.50.48:8080/api/v1/eor/transactions/${id}`);
+        //     alert(`Delete successful for id ${id}`);
+        //     location.reload();
+        // } catch(err) {
+        //     console.log(err);
+        // }
     }
 
     return (
@@ -43,7 +45,7 @@ const Table = ({ records,setOpenUpdate,setData }) => {
                         <td className="p-2"><NumberFormat amount={receipt.amount} /></td>
                         <td className="flex items-center justify-center gap-3 p-3">
                             <button onClick={() => editReceipt(receipt)} className="text-green-500 text-xl"><BiEdit /></button>
-                            <button onClick={() => deleteReceipt(receipt.id)} className="text-red-500 text-xl"><BiTrash /></button>
+                            <button onClick={() => deleteReceipt(receipt)} className="text-red-500 text-xl"><BiTrash /></button>
                             <button onClick={() => navigate(`/generatepdf/${receipt.id}`)} className="text-xl text-red-500"><AiOutlineFilePdf /></button>
                         </td>
                     </tr>

@@ -10,6 +10,8 @@ const Update = ({ record,setOpenUpdate }) => {
     const [rep_acc,setRep] = useState('');
     const [amount,setAmount] = useState(record.amount);
     const [customer_no,setCustomerNo] = useState(record.customer_no);
+
+    // /api/v1/eor/transactions/{id}
     
     return (
         <div className="absolute top-0 left-0 h-full bg-black w-full bg-opacity-50 flex items-center justify-center">
