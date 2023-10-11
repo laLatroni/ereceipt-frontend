@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 const Delete = ({ setOpenDelete,record }) => {
 
     const deleteReceipt = async () => {
