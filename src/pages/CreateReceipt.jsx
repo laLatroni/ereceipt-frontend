@@ -4,6 +4,12 @@ import { useNavigate } from 'react-router-dom';
 
 const CreateReceipt = () => {
 
+    const modeOfPayments = [
+        { id: 1, payment: 'G-cash' },
+        { id: 2, payment: 'Bank Transfer' },
+        { id: 3, payment: 'Maya' }
+    ]
+
     const year = new Date().getFullYear();
     const month = new Date().getMonth() + 1
     const day = new Date().getDate();
@@ -27,8 +33,6 @@ const CreateReceipt = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        //const names = `${firstname} ${lastname}`;
-
         try {
             const data = await axios.post('http://192.168.50.48:8080/api/v1/eor/transactions',{ id, or_number,names, cus_email, dates,rep_acc,amount,customer_no });
             console.log(data);
@@ -42,7 +46,6 @@ const CreateReceipt = () => {
 
     return (
         <div className="h-screen flex flex-col items-center container m-auto py-10 px-5">
-            {/* <img className="w-52" src="/images/cazalogo.png" alt="CAZA Logo" /> */}
             <h1 className="text-center font-medium md:text-2xl mt-5">Customer Transaction</h1>
 
             <div className="flex justify-center items-center w-full">
@@ -81,14 +84,12 @@ const CreateReceipt = () => {
                         <label className="text-sm" htmlFor="password">Mode of Payment:</label>
                         <select className="p-2 outline-none border border-gray-300 rounded-md">
                             <option hidden>Select mode of payment</option>
+                            { modeOfPayments?.map(payment => (
+                                <option value={payment.id}>{payment.payment}</option>
+                            )) }
                         </select>
                         
                     </div>
-                
-                    {/* <div className="flex flex-col">
-                        <label className="text-sm" htmlFor="password">Customer No.:</label>
-                        <input className="p-2 outline-none border border-gray-300 rounded-md" type="text" onChange={(e) => setCustomerNo(e.target.value)} />
-                    </div> */}
 
                     <button className="bg-blue-500 text-gray-100 rounded-md p-2 w-1/4 self-end">Submit</button>
                 </form>

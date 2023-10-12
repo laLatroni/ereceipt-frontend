@@ -19,6 +19,14 @@ const Table = ({ records,setOpenUpdate,setOpenDelete,setData }) => {
     }
 
     const paginatePage = (pageNumbers) => setCurrentPage(pageNumbers);
+    
+    const nextPage = () => {
+
+    }
+
+    const previousPage = () => {
+        
+    }
 
     const tableHeaders = ["ID","Name","Email","Customer No.","Dates","Amount","Action"];
 
