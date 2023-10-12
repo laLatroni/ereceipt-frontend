@@ -46,16 +46,6 @@ const SearchReceipt = () => {
         setFiltered(filteredData);
     }
 
-    
-
-    // Pagination function
-   
-
-    const paginateTable = () => {
-        const recordPerPage = 5;
-        const countOfPages = Math.floor(receipts.length / recordPerPage);     
-    }
-
     return (
         <div className="flex flex-col items-center py-5 h-screen relative">
             {/* <CAZALogo /> */}
