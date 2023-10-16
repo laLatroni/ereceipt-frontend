@@ -9,12 +9,12 @@ const PDFView = () => {
 
     const { id } = useParams();
 
-    const { records,isLoading } = useFetchHook(`http://localhost:8080/api/v1/api/departments/${id}`);
+    const { records,isLoading } = useFetchHook(`http://localhost:8080/api/v1/eor/transactions/${id}`);
 
     const generatePdf = async () => {
         
         try {
-            const data = await axios.get(`http://localhost:8080/api/v1/eor/transactions/${id}`);
+            const data = await axios.get(`http://localhost:8080/api/v1/eor/transactions/generatepdf/${id}`);
             console.log(data);
             alert('receipt has been regenerate');
         } catch(err) {
