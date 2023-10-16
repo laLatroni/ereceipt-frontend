@@ -11,7 +11,6 @@ import PDFView from './pages/PDFView';
 import Dashboard from './pages/Dashboard';
  
 const router = createBrowserRouter(
-
   createRoutesFromElements(
     <Route>
       <Route path='/login' element={<Login />} />

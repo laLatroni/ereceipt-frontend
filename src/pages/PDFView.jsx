@@ -9,14 +9,14 @@ const PDFView = () => {
 
     const { id } = useParams();
 
-    const { records,isLoading } = useFetchHook(`http://localhost:8080/api/v1/api/departments/${id}`);
+    const { records,isLoading } = useFetchHook(`http://localhost:8080/api/v1/eor/transactions/${id}`);
 
     const generatePdf = async () => {
         
         try {
-            const data = await axios.get(`http://localhost:8080/api/v1/generate/${id}`);
+            const data = await axios.get(`http://localhost:8080/api/v1/eor/transactions/generatepdf/${id}`);
             console.log(data);
-            alert('receipt has been regenerated');
+            alert('receipt has been regenerate');
         } catch(err) {
             console.log(err);
         }
@@ -24,7 +24,7 @@ const PDFView = () => {
 
     const sendReceipt = async () => {
         try {
-            const data = await axios.post(`http://localhost:8080/api/v1/send-email`, { names: records.names, cus_email: records.cus_email, or_number: records.or_number,dates: records.dates, rep_acc: records.rep_acc, amount: records.amount });
+            const data = await axios.post(`http://localhost:8080/api/v1/eor/transactions/send-email`, { names: records.names, cus_email: records.cus_email, or_number: records.or_number,dates: records.dates, rep_acc: records.rep_acc, amount: records.amount });
             console.log(data);
             alert(`Email has been sent to ${records.cus_email}`)
         } catch(err) {

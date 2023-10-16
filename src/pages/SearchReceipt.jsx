@@ -1,6 +1,7 @@
 import { useState } from "react"
 import axios from "axios"
 import Update from "../components/Update";
+import Delete from '../components/Delete';
 import { useNavigate } from 'react-router-dom';
 import { useFetchHook } from "../hooks/useFetchHook";
 import Table from "../components/Table";
@@ -13,7 +14,7 @@ const SearchReceipt = () => {
 
     const navigate = useNavigate();
 
-    // const { records: receipts, isLoading } = useFetchHook(`http://192.168.50.48:8080/api/v1/api/departments`);
+    // const { records: receipts, isLoading } = useFetchHook(`http://192.168.50.48:8080/api/v1/eor/transactions`);
 
     const receipts = [
         { id: 1, names: 'Paul Andres', cus_email: 'polopdoandres@gmail.com',customer_no: 123456, dates: '2023-10-02', amount: 50200 },
@@ -45,16 +46,6 @@ const SearchReceipt = () => {
         setFiltered(filteredData);
     }
 
-    
-
-    // Pagination function
-   
-
-    const paginateTable = () => {
-        const recordPerPage = 5;
-        const countOfPages = Math.floor(receipts.length / recordPerPage);     
-    }
-
     return (
         <div className="flex flex-col items-center py-5 h-screen relative">
             {/* <CAZALogo /> */}
@@ -62,9 +53,9 @@ const SearchReceipt = () => {
                 <input className="p-2 border border-gray-300 w-1/2 rounded-md outline-none" type="search" onChange={(e) => searchTransaction(e.target.value)} placeholder="Type to search" />
             </form>
             {/* { isLoading && <p className="font-semibold text-xl animate-pulse">No records yet...</p> } */}
-            <Table records={filtered} setOpenUpdate={setOpenUpdate} setData={setData} />
+            <Table records={filtered} setOpenUpdate={setOpenUpdate} setOpenDelete={setOpenDelete} setData={setData} />
             { openUpdate && <Update record={data} setOpenUpdate={setOpenUpdate} /> }
-            { openDelete && <Delete /> }
+            { openDelete && <Delete setOpenDelete={setOpenDelete} record={data} /> }
         </div>
     )
 }
