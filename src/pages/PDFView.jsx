@@ -16,7 +16,7 @@ const PDFView = () => {
         try {
             const data = await axios.get(`http://localhost:8080/api/v1/eor/transactions/${id}`);
             console.log(data);
-            alert('receipt has been regenerated');
+            alert('receipt has been regenerate');
         } catch(err) {
             console.log(err);
         }
