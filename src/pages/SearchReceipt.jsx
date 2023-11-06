@@ -16,7 +16,7 @@ const SearchReceipt = () => {
 
     // const { records: receipts, isLoading } = useFetchHook(`http://192.168.50.48:8080/api/v1/eor/transactions`);
 
-    const receipts = [
+    const records = [
         { id: 1, names: 'Paul Andres', cus_email: 'polopdoandres@gmail.com',customer_no: 123456, dates: '2023-10-02', amount: 50200 },
         { id: 2, names: 'John Lester Ymata', cus_email: 'polopdoandres@gmail.com',customer_no: 123456, dates: '2023-10-02', amount: 50200 },
         { id: 3, names: 'Genrev Condino', cus_email: 'polopdoandres@gmail.com',customer_no: 1234563, dates: '2023-10-02', amount: 50200 },
@@ -33,7 +33,7 @@ const SearchReceipt = () => {
     ]
 
     // For searching function
-    const [filtered,setFiltered] = useState(receipts);
+    const [filtered,setFiltered] = useState(records);
     const searchTransaction = (userInput) => {
         const filteredData = receipts?.filter(receipt => {
             if(userInput === '') {
@@ -52,6 +52,7 @@ const SearchReceipt = () => {
             <form className="flex items-center p-2 w-3/4 gap-2 mt-5">
                 <input className="p-2 border border-gray-300 w-1/2 rounded-md outline-none" type="search" onChange={(e) => searchTransaction(e.target.value)} placeholder="Type to search" />
             </form>
+            { filtered.length < 1 && <h1 className="w-3/4 mt-4 animate-pulse font-semibold -mb-5">No records yet for transactions</h1> }
             {/* { isLoading && <p className="font-semibold text-xl animate-pulse">No records yet...</p> } */}
             <Table records={filtered} setOpenUpdate={setOpenUpdate} setOpenDelete={setOpenDelete} setData={setData} />
             { openUpdate && <Update record={data} setOpenUpdate={setOpenUpdate} /> }

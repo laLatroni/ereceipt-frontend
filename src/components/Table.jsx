@@ -25,7 +25,7 @@ const Table = ({ records,setOpenUpdate,setOpenDelete,setData }) => {
     }
 
     const previousPage = () => {
-        
+
     }
 
     const tableHeaders = ["ID","Name","Email","Customer No.","Dates","Amount","Action"];
@@ -70,9 +70,11 @@ const Table = ({ records,setOpenUpdate,setOpenDelete,setData }) => {
             </table>
             {/* Page */}
             <div className="flex gap-2 mt-4">
+                <button onClick={previousPage}>Previous</button>
                 { pageNumbers.map(number => (
                     <button className={`gap-2 w-7 rounded-md text-white ${currentPage === number ? "bg-blue-500" : "bg-blue-700"}`} onClick={() => paginatePage(number)}>{number}</button>
                 )) }
+                <button onClick={nextPage}>Next</button>
             </div>
         </>
     )
