@@ -14,18 +14,29 @@ const Table = ({ records,setOpenUpdate,setOpenDelete,setData }) => {
     const currentPosts = records.slice(indexOfFirstPage,indexOfLastPage);
     const pageNumbers = [];
 
-    for(let i = 1; i <= Math.ceil(records.length / postsPerPage); i++) {
+    const lengthOfTableRecords = Math.ceil(records.length / postsPerPage);
+
+    for(let i = 1; i <= lengthOfTableRecords; i++) {
         pageNumbers.push(i);
     }
 
     const paginatePage = (pageNumbers) => setCurrentPage(pageNumbers);
     
     const nextPage = () => {
-
+        if(currentPage < lengthOfTableRecords) { 
+            setCurrentPage(currentPage + 1);
+        } else {
+            alert('You\'re on the last page');
+        }
     }
 
     const previousPage = () => {
-
+        if(currentPage >= 2) { // Make it to Two since last click on first page for currentPage is equal to 2
+            setCurrentPage(currentPage - 1);
+            console.log(currentPage);
+        } else {
+            alert('You\'re on the first page');
+        }
     }
 
     const tableHeaders = ["ID","Name","Email","Customer No.","Dates","Amount","Action"];
@@ -70,11 +81,11 @@ const Table = ({ records,setOpenUpdate,setOpenDelete,setData }) => {
             </table>
             {/* Page */}
             <div className="flex gap-2 mt-4">
-                <button onClick={previousPage}>Previous</button>
+                <button className="text-red-500" onClick={previousPage}>Previous</button>
                 { pageNumbers.map(number => (
-                    <button className={`gap-2 w-7 rounded-md text-white ${currentPage === number ? "bg-blue-500" : "bg-blue-700"}`} onClick={() => paginatePage(number)}>{number}</button>
+                    <button key={number} className={`gap-2 w-7 rounded-md text-white ${currentPage === number ? "bg-blue-500" : "bg-blue-700"}`} onClick={() => paginatePage(number)}>{number}</button>
                 )) }
-                <button onClick={nextPage}>Next</button>
+                <button className="text-green-500" onClick={nextPage}>Next</button>
             </div>
         </>
     )

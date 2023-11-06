@@ -18,20 +18,12 @@ const Signup = () => {
     const registerUser = async (e) => {
         e.preventDefault();
         try {
-            const data = await axios.post('http://localhost:8080/api/v1/auth/register',{ email,password });
-            const token = 'Bearer ' + data.data.token;
-            console.log(token);
-            setCookie('Authorization',token);
+            const data = await axios.post('http://localhost:8080/api/users/add',{ email,password });
             navigate('/login');
         } catch(err) {
             console.log(err);
         }
     }
-
-
-    // /api/v1/register -> registration -> gagawa ng record sa user/customer table
-    // /api/v1/login -> login -> mapupunta sa homepage 
-    // /api/v1/forgetpassword -> forget password
     
     return (
         <div className="bg-gray-200 h-screen flex justify-center items-center">

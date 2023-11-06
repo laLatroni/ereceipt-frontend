@@ -12,7 +12,7 @@ const CreateReceipt = () => {
 
     const year = new Date().getFullYear();
     const month = new Date().getMonth() + 1
-    const day = new Date().getDate();
+    const day = new Date().getDate() < 10 ? `0${new Date().getDate()}` : new Date.getDate(); 
     const dateFormat = year + '-' + (month < 10 ? `0${month}` : month) + '-' + day;
    
     const [id,setId] = useState('');
@@ -35,7 +35,7 @@ const CreateReceipt = () => {
 
         try {
             const data = await axios.post('http://192.168.50.48:8080/api/v1/eor/transactions',{ id, or_number,names, cus_email, dates,rep_acc,amount,customer_no });
-            console.log(data);
+           
             alert('Transaction Complete');
             navigate('/search-receipt');
         } catch(err) {
@@ -77,7 +77,7 @@ const CreateReceipt = () => {
 
                     <div className="flex flex-col">
                         <label className="text-sm" htmlFor="password">Date:</label>
-                        <input className="p-2 outline-none border border-gray-300 rounded-md" type="date" value={(e) => setDates(dateFormat)} required />
+                        <input className="p-2 outline-none border border-gray-300 rounded-md" type="date" defaultValue={dateFormat} required readOnly />
                     </div>
 
                     <div className="flex flex-col">
@@ -85,7 +85,7 @@ const CreateReceipt = () => {
                         <select className="p-2 outline-none border border-gray-300 rounded-md">
                             <option hidden>Select mode of payment</option>
                             { modeOfPayments?.map(payment => (
-                                <option value={payment.id}>{payment.payment}</option>
+                                <option key={payment.id} value={payment.id}>{payment.payment}</option>
                             )) }
                         </select>
                         
