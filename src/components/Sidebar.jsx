@@ -3,13 +3,15 @@ import { Link } from "react-router-dom";
 import { AiOutlineHome } from 'react-icons/ai';
 import { IoCreateOutline } from 'react-icons/io5';
 import { AiOutlineSearch } from 'react-icons/ai';
+import { BsPersonAdd } from 'react-icons/bs';
 
 const Sidebar = () => {
 
     const menus = [
         { menu: 'Dashboard', icon: <AiOutlineHome />, link: '/' },
         { menu: 'Create Receipt', icon: <IoCreateOutline />, link: '/create-receipt' },
-        { menu: 'Search Receipt', icon: <AiOutlineSearch />, link: '/search-receipt' }
+        { menu: 'Search Receipt', icon: <AiOutlineSearch />, link: '/search-receipt' },
+        { menu: 'Create Customer', icon: <BsPersonAdd />, link: '/create-customer' }
     ];
 
     return (

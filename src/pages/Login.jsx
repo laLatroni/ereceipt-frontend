@@ -2,13 +2,22 @@ import { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import CAZALogo from '../components/CAZALogo';
+import { baseUrl } from '../baseUrl';
 
 const Login = () => {
 
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
 
-    
+    const userLogin = async () => {
+        try {
+            const data = await axios.post('http://localhost:8080/api/v1/eor/SignIn',{ userName: email, password });
+            console.log(data);
+            alert('Logged in successful');
+        } catch(err) {
+            console.log(err);
+        }
+    }
 
     return (
         <div className=" h-screen flex justify-center items-center bg-gray-200">
@@ -17,7 +26,7 @@ const Login = () => {
                     <CAZALogo />
                     {/* <h1 className="text-center text-2xl font-semibold">Login</h1> */}
 
-                    <form className="flex flex-col gap-2">
+                    <form onSubmit={userLogin} className="flex flex-col gap-2">
                         <div className="flex flex-col">
                             <label htmlFor="email">Email</label>
                             <input className="p-2 rounded-md bg-gray-100 outline-none" type="email" onChange={(e) => setEmail(e.target.value)} />
