@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import CAZALogo from '../components/CAZALogo';
 import { baseUrl } from '../baseUrl';
 
@@ -9,11 +9,15 @@ const Login = () => {
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
 
-    const userLogin = async () => {
+    const navigate = useNavigate();
+
+    const userLogin = async (e) => {
+        e.preventDefault()
         try {
             const data = await axios.post('http://localhost:8080/api/v1/eor/SignIn',{ userName: email, password });
             console.log(data);
             alert('Logged in successful');
+            navigate('/');
         } catch(err) {
             console.log(err);
         }

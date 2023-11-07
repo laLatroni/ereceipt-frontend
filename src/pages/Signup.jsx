@@ -18,11 +18,11 @@ const Signup = () => {
     const registerUser = async (e) => {
         e.preventDefault();
         try {
-            const data = await axios.post('http://localhost:8080/api/v1/eor/user-add',{ firstName,lastName,email,password });
+            const data = await axios.post('http://localhost:8080/api/v1/eor/user-register',{ firstName,lastName,email,password });
             alert('Registered successfully');
             navigate('/login');
         } catch(err) {
-            console.log(err);
+            alert(err.response.data.error);
         }
     }
     
@@ -35,8 +35,8 @@ const Signup = () => {
 
                 <div className="mt-5 w-full">
                     <div className="flex items-center justify-around gap-2">
-                        <input className="p-2 outline-none border w-full border-gray-300 rounded-md" placeholder="First Name" type="text" onChange={(e) => setFname(e.target.value)} required />
-                        <input className="p-2 outline-none border w-full border-gray-300 rounded-md" placeholder="Last Name" type="text" onChange={(e) => setLname(e.target.value)} required />
+                        <input className="p-2 outline-none border w-full border-gray-300 rounded-md" placeholder="First Name" type="text" onChange={(e) => setFirstName(e.target.value)} required />
+                        <input className="p-2 outline-none border w-full border-gray-300 rounded-md" placeholder="Last Name" type="text" onChange={(e) => setLastName(e.target.value)} required />
                     </div>
                     <div className="mt-3">
                         <input className="p-2 outline-none border w-full border-gray-300 rounded-md" type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} required />
