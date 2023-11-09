@@ -1,8 +1,10 @@
+import { baseUrl } from "../baseUrl";
+
 const Delete = ({ setOpenDelete,record }) => {
 
     const deleteReceipt = async () => {
         try {
-            const data = await axios.delete(`http://192.168.50.48:8080/api/v1/eor/transactions/${record.id}`);
+            const data = await axios.delete(`${baseUrl()}/transactions/${record.id}`);
             alert(`Delete successful for id ${id}`);
             location.reload();
         } catch(err) {

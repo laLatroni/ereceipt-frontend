@@ -18,7 +18,7 @@ const Signup = () => {
     const registerUser = async (e) => {
         e.preventDefault();
         try {
-            const data = await axios.post('http://localhost:8080/api/v1/eor/user-register',{ firstName,lastName,email,password });
+            const data = await axios.post(`${baseUrl()}/user-register`,{ firstName,lastName,email,password });
             alert('Registered successfully');
             navigate('/login');
         } catch(err) {

@@ -14,7 +14,7 @@ const Login = () => {
     const userLogin = async (e) => {
         e.preventDefault()
         try {
-            const data = await axios.post('http://localhost:8080/api/v1/eor/SignIn',{ userName: email, password });
+            const data = await axios.post(`${baseUrl()}/login`,{ userName: email, password });
             console.log(data);
             alert('Logged in successful');
             navigate('/');
