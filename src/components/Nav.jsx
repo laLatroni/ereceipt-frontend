@@ -6,7 +6,7 @@ const Nav = () => {
 
     const logout = async () => {
         try {
-            const data = await axios.get(`http://localhost:8080/api/v1/logout`);
+            const data = await axios.get(`http://localhost:8080/api/v1/logout`,{ withCredentials: true });
             console.log(data);
         } catch(err) {
             console.log(err)
