@@ -12,7 +12,7 @@ const Login = () => {
     const navigate = useNavigate();
 
     const userLogin = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
         try {
             const data = await axios.post(`http://localhost:8080/login`,{ userName: email, password },{ withCredentials:true });
             console.log(data);
