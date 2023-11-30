@@ -34,7 +34,7 @@ const SearchReceipt = () => {
     // ]
 
     // For searching function
-    const [filtered,setFiltered] = useState(records);
+    const [filtered,setFiltered] = useState(receipts);
     const searchTransaction = (userInput) => {
         const filteredData = receipts?.filter(receipt => {
             if(userInput === '') {
