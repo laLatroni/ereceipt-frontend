@@ -14,7 +14,7 @@ const Login = () => {
     const userLogin = async (e) => {
         e.preventDefault()
         try {
-            const data = await axios.post(`${baseUrl()}/login`,{ userName: email, password },{ withCredentials:true });
+            const data = await axios.post(`http://localhost:8080/login`,{ userName: email, password },{ withCredentials:true });
             console.log(data);
             alert('Logged in successful');
             navigate('/');
